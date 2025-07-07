@@ -1,6 +1,7 @@
 package com.dev.iagch.Produtos.domain.entity;
 
 import com.dev.iagch.Produtos.domain.valueobjects.Estoque;
+import com.dev.iagch.Produtos.domain.valueobjects.Precos;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,13 +12,11 @@ import java.time.LocalDateTime;
 @Table(name = "TB_Produtos")
 public class Produto {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto")
     private Long id;
-
-    @Column(name = "codigo_produto", nullable = false, unique = true, length = 50)
-    private String codigo;
 
     @Column(name = "descricao_produto", length = 500)
     private String descricao;
@@ -25,26 +24,8 @@ public class Produto {
     @Column(name = "caracteristica_produto", nullable = false, length = 150)
     private String caracteristica;
 
-    @Column(name = "preco_custo", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoCusto;
-
-    @Column(name = "preco_venda", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoVenda;
-
-    @Column(name = "preco_venda_2", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoVenda2;
-
-    @Column(name = "preco_venda_3", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoVenda3;
-
-    @Column(name = "preco_fardo", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoFardo;
-
-    @Column(name = "preco_caixa", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoCaixa;
-
-    @Column(name = "preco_palete", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoPalete;
+    @Embedded
+    private Precos precos;
 
     @Embedded
     private Estoque estoque;
@@ -58,27 +39,52 @@ public class Produto {
     @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
-    public Produto() {
-        this.estoque = new Estoque();
-    }
-
-    public Produto(String codigo, String descricao, String caracteristica, BigDecimal precoCusto, BigDecimal precoVenda,
-                   BigDecimal precoVenda2, BigDecimal precoVenda3, BigDecimal precoFardo, BigDecimal precoCaixa,
-                   BigDecimal precoPalete, Estoque estoque) {
-
-        this.codigo = codigo;
+    public Produto(Long id, String descricao, String caracteristica, Precos precos, Estoque estoque, Boolean ativo, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao) {
+        this.id = id;
         this.descricao = descricao;
         this.caracteristica = caracteristica;
-        this.precoCusto = precoCusto != null ? precoCusto : BigDecimal.ZERO;
-        this.precoVenda = precoVenda != null ? precoVenda : BigDecimal.ZERO;
-        this.precoVenda2 = precoVenda2 != null ? precoVenda2 : BigDecimal.ZERO;
-        this.precoVenda3 = precoVenda3 != null ? precoVenda3 : BigDecimal.ZERO;
-        this.precoFardo = precoFardo != null ? precoFardo : BigDecimal.ZERO;
-        this.precoCaixa = precoCaixa != null ? precoCaixa : BigDecimal.ZERO;
-        this.precoPalete = precoPalete != null ? precoPalete : BigDecimal.ZERO;
-        this.estoque = estoque != null ? estoque : new Estoque();
-        this.ativo = true;
+        this.precos = precos;
+        this.estoque = estoque;
+        this.ativo = ativo;
+        this.dataCriacao = dataCriacao;
+        this.dataAtualizacao = dataAtualizacao;
     }
+
+    public void setPrecoCusto(BigDecimal precoCusto) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoCusto(precoCusto);
+    }
+
+    public void setPrecoVenda(BigDecimal precoVenda) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoVenda(precoVenda);
+    }
+
+    public void setPrecoVenda2(BigDecimal precoVenda2) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoVenda2(precoVenda2);
+    }
+
+    public void setPrecoVenda3(BigDecimal precoVenda3) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoVenda3(precoVenda3);
+    }
+
+    public void setPrecoFardo(BigDecimal precoFardo) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoFardo(precoFardo);
+    }
+
+    public void setPrecoCaixa(BigDecimal precoCaixa) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoCaixa(precoCaixa);
+    }
+
+    public void setPrecoPalete(BigDecimal precoPalete) {
+        if (this.precos == null) this.precos = new Precos();
+        this.precos.setPrecoPalete(precoPalete);
+    }
+
 
     @PrePersist
     protected void onCreate() {
@@ -94,56 +100,12 @@ public class Produto {
         return id;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public String getDescricao() {
         return descricao;
     }
 
     public String getCaracteristica() {
         return caracteristica;
-    }
-
-    public BigDecimal getPrecoCusto() {
-        return precoCusto;
-    }
-
-    public void setPrecoCusto(BigDecimal precoCusto) {
-        this.precoCusto = precoCusto;
-    }
-
-    public BigDecimal getPrecoVenda() {
-        return precoVenda;
-    }
-
-    public BigDecimal getPrecoVenda2() {
-        return precoVenda2;
-    }
-
-    public BigDecimal getPrecoVenda3() {
-        return precoVenda3;
-    }
-
-    public BigDecimal getPrecoFardo() {
-        return precoFardo;
-    }
-
-    public BigDecimal getPrecoCaixa() {
-        return precoCaixa;
-    }
-
-    public BigDecimal getPrecoPalete() {
-        return precoPalete;
-    }
-
-    public Estoque getEstoque() {
-        return estoque;
     }
 
 
