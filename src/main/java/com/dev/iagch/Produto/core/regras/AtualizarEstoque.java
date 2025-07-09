@@ -1,19 +1,17 @@
-package com.dev.iagch.Produtos.domain.useCases.Imp;
+package com.dev.iagch.Produto.core.regras;
 
-import com.dev.iagch.Produtos.domain.entity.Produto;
-import com.dev.iagch.Produtos.domain.useCases.interfaces.IAtualizarEstoqueUseCase;
-import com.dev.iagch.Produtos.domain.valueobjects.Estoque;
-import com.dev.iagch.Produtos.infrastructure.repository.ProdutoRepository;
+import com.dev.iagch.Produto.core.entity.Produto;
+import com.dev.iagch.Produto.core.valueobjects.Estoque;
+import com.dev.iagch.Produto.infrastructure.repository.ProdutoRepository;
 
-public  class AtualizarEstoqueUseCaseImp implements IAtualizarEstoqueUseCase {
+public  class AtualizarEstoque {
 
     private final ProdutoRepository produtoRepository;
 
-    public AtualizarEstoqueUseCaseImp(ProdutoRepository produtoRepository) {
+    public AtualizarEstoque(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
-    @Override
     public void atualizarEstoque(Long idProduto, Estoque estoque) {
         Produto produto = produtoRepository.findById(idProduto)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));

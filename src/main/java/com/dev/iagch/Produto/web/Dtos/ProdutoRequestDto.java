@@ -1,10 +1,8 @@
-package com.dev.iagch.Produtos.application.Dtos;
+package com.dev.iagch.Produto.web.Dtos;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-public class ProdutoResponseDto {
-    public Long id;
+public class ProdutoRequestDto {
     public String codigo;
     public String descricao;
     public String caracteristica;
@@ -18,7 +16,4 @@ public class ProdutoResponseDto {
     public Integer quantidadeEstoqueReal;
     public Integer quantidadeEstoqueArmazem;
     public Integer quantidadeEstoqueFiscal;
-    public Boolean ativo;
-    public LocalDateTime dataCriacao;
-    public LocalDateTime dataAtualizacao;
 }

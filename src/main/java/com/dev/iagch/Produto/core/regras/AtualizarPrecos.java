@@ -1,24 +1,19 @@
-package com.dev.iagch.Produtos.domain.useCases.Imp;
+package com.dev.iagch.Produto.core.regras;
 
 
-import com.dev.iagch.Produtos.domain.entity.Produto;
-import com.dev.iagch.Produtos.domain.useCases.interfaces.IAtualizarPrecosUseCase;
-import com.dev.iagch.Produtos.domain.valueobjects.Precos;
-import com.dev.iagch.Produtos.infrastructure.repository.ProdutoRepository;
+import com.dev.iagch.Produto.core.entity.Produto;
+import com.dev.iagch.Produto.core.valueobjects.Precos;
+import com.dev.iagch.Produto.infrastructure.repository.ProdutoRepository;
 
-import java.math.BigDecimal;
-
-public class AtualizarPrecosImp implements IAtualizarPrecosUseCase {
+public class AtualizarPrecos {
 
     private final ProdutoRepository produtoRepository;
 
 
-    public AtualizarPrecosImp(ProdutoRepository produtoRepository) {
+    public AtualizarPrecos(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
-
-    @Override
     public void atualizarPrecos(Long idProduto, Precos precos) {
         Produto produto = produtoRepository.findById(idProduto)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));

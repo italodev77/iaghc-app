@@ -1,20 +1,30 @@
-package com.dev.iagch.Produtos.application.Dtos;
+package com.dev.iagch.Produto.core.valueobjects;
 
-public class EstoqueDTO {
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
+@Embeddable
+public class Estoque {
+    @Column(name = "quantidade_estoque_real", nullable = false)
     private Integer real;
 
+    @Column(name = "quantidade_estoque_armazem", nullable = false)
     private Integer armazem;
 
+    @Column(name = "quantidade_estoque_fiscal", nullable = false)
     private Integer fiscal;
 
-    public EstoqueDTO() {
-    }
+    // construtores, getters, setters
 
-    public EstoqueDTO(Integer real, Integer armazem, Integer fiscal) {
+
+
+    public Estoque(Integer real, Integer armazem, Integer fiscal) {
         this.real = real;
         this.armazem = armazem;
         this.fiscal = fiscal;
+    }
+
+    public Estoque() {
     }
 
     public Integer getReal() {

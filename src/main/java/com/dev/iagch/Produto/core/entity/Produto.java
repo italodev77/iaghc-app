@@ -1,9 +1,8 @@
-package com.dev.iagch.Produtos.domain.entity;
+package com.dev.iagch.Produto.core.entity;
 
-import com.dev.iagch.Produtos.domain.valueobjects.Estoque;
-import com.dev.iagch.Produtos.domain.valueobjects.Precos;
+import com.dev.iagch.Produto.core.valueobjects.Estoque;
+import com.dev.iagch.Produto.core.valueobjects.Precos;
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -136,4 +135,12 @@ public class Produto {
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
     }
+    public Precos getPrecos() {
+        return precos;
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
 }

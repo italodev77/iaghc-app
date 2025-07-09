@@ -1,4 +1,4 @@
-package com.dev.iagch.Produtos.domain.valueobjects;
+package com.dev.iagch.Produto.core.valueobjects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
