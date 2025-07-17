@@ -19,9 +19,10 @@ public class ProdutoMapper {
                 dto.preco.precoCusto,
                 dto.preco.precoVenda,
                 dto.preco.precoVenda2,
-                dto.preco.precoVendaFardo,
-                dto.preco.precoVendaCaixa,
-                dto.preco.precoVendaPallet
+                dto.preco.precoVenda3,
+                dto.preco.precoVenda4,
+                dto.preco.precoVenda5,
+                dto.preco.precoVenda6
         );
         produto.atualizarPreco(preco);
 

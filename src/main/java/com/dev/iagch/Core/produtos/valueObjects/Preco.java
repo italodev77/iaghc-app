@@ -12,9 +12,10 @@ public class Preco {
     private  BigDecimal precoCusto;
     private  BigDecimal precoVenda;
     private  BigDecimal precoVenda2;
-    private  BigDecimal precoVendaFardo;
-    private  BigDecimal precoVendaCaixa;
-    private  BigDecimal precoVendaPallet;
+    private  BigDecimal precoVenda3;
+    private  BigDecimal precoVenda4;
+    private  BigDecimal precoVenda5;
+    private  BigDecimal precoVenda6;
 
 
 
@@ -27,26 +28,28 @@ public class Preco {
             BigDecimal precoCusto,
             BigDecimal precoVenda,
             BigDecimal precoVenda2,
-            BigDecimal precoVendaFardo,
-            BigDecimal precoVendaCaixa,
-            BigDecimal precoVendaPallet
+            BigDecimal precoVenda3,
+            BigDecimal precoVenda4,
+            BigDecimal precoVenda5,
+            BigDecimal precoVenda6
     ) {
         this.precoCompra = defaultIfNull(precoCompra);
         this.precoCusto = defaultIfNull(precoCusto);
         this.precoVenda = defaultIfNull(precoVenda);
         this.precoVenda2 = defaultIfNull(precoVenda2);
-        this.precoVendaFardo = defaultIfNull(precoVendaFardo);
-        this.precoVendaCaixa = defaultIfNull(precoVendaCaixa);
-        this.precoVendaPallet = defaultIfNull(precoVendaPallet);
+        this.precoVenda3 = defaultIfNull(precoVenda3);
+        this.precoVenda4 = defaultIfNull(precoVenda4);
+        this.precoVenda5 = defaultIfNull(precoVenda5);
+        this.precoVenda6 = defaultIfNull(precoVenda6);
 
         validarPrecos();
     }
     private void validarPrecos() {
         if (precoVenda.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de venda não pode ser menor que o custo.");
         if (precoVenda2.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de venda 2 não pode ser menor que o custo.");
-        if (precoVendaFardo.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de fardo não pode ser menor que o custo.");
-        if (precoVendaCaixa.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de caixa não pode ser menor que o custo.");
-        if (precoVendaPallet.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de pallet não pode ser menor que o custo.");
+        if (precoVenda6.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de fardo não pode ser menor que o custo.");
+        if (precoVenda4.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de caixa não pode ser menor que o custo.");
+        if (precoVenda5.compareTo(precoCusto) < 0) throw new IllegalArgumentException("Preço de pallet não pode ser menor que o custo.");
     }
 
     public Preco atualizarPrecos(Preco novo) {
@@ -55,9 +58,10 @@ public class Preco {
                 novo.precoCusto != null ? novo.precoCusto : this.precoCusto,
                 novo.precoVenda != null ? novo.precoVenda : this.precoVenda,
                 novo.precoVenda2 != null ? novo.precoVenda2 : this.precoVenda2,
-                novo.precoVendaFardo != null ? novo.precoVendaFardo : this.precoVendaFardo,
-                novo.precoVendaCaixa != null ? novo.precoVendaCaixa : this.precoVendaCaixa,
-                novo.precoVendaPallet != null ? novo.precoVendaPallet : this.precoVendaPallet
+                novo.precoVenda3 != null ? novo.precoVenda3 : this.precoVenda3,
+                novo.precoVenda4 != null ? novo.precoVenda4 : this.precoVenda4,
+                novo.precoVenda5 != null ? novo.precoVenda5 : this.precoVenda5,
+                novo.precoVenda6 != null ? novo.precoVenda6 : this.precoVenda6
         );
     }
 
@@ -70,14 +74,15 @@ public class Preco {
                 && Objects.equals(precoCusto, preco.precoCusto)
                 && Objects.equals(precoVenda, preco.precoVenda)
                 && Objects.equals(precoVenda2, preco.precoVenda2)
-                && Objects.equals(precoVendaFardo, preco.precoVendaFardo)
-                && Objects.equals(precoVendaCaixa, preco.precoVendaCaixa)
-                && Objects.equals(precoVendaPallet, preco.precoVendaPallet);
+                && Objects.equals(precoVenda3, preco.precoVenda3)
+                && Objects.equals(precoVenda4, preco.precoVenda4)
+                && Objects.equals(precoVenda5, preco.precoVenda5)
+                && Objects.equals(precoVenda6, preco.precoVenda6);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(precoCompra, precoCusto, precoVenda, precoVenda2, precoVendaFardo, precoVendaCaixa, precoVendaPallet);
+        return Objects.hash(precoCompra, precoCusto, precoVenda, precoVenda2, precoVenda3, precoVenda4, precoVenda5, precoVenda6);
     }
 
     public BigDecimal getPrecoCusto() {
@@ -96,17 +101,21 @@ public class Preco {
         return precoVenda2;
     }
 
-    public BigDecimal getPrecoVendaFardo() {
-        return precoVendaFardo;
+    public BigDecimal getPrecoVenda3() {
+        return precoVenda3;
     }
 
-    public BigDecimal getPrecoVendaCaixa() {
-        return precoVendaCaixa;
+    public BigDecimal getPrecoVenda4() {
+        return precoVenda4;
     }
 
-    public BigDecimal getPrecoVendaPallet() {
-        return precoVendaPallet;
+    public BigDecimal getPrecoVenda5() {
+        return precoVenda5;
     }
+    public BigDecimal getPrecoVenda6() {
+        return precoVenda6;
+    }
+
 
 
 

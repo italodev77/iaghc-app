@@ -11,9 +11,10 @@ public class PrecoMapper {
                 dto.precoCusto,
                 dto.precoVenda,
                 dto.precoVenda2,
-                dto.precoVendaFardo,
-                dto.precoVendaCaixa,
-                dto.precoVendaPallet
+                dto.precoVenda3,
+                dto.precoVenda4,
+                dto.precoVenda5,
+                dto.precoVenda6
         );
 
     }

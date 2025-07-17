@@ -7,7 +7,8 @@ public class PrecoParcialDto {
     public BigDecimal precoCusto;
     public BigDecimal precoVenda;
     public BigDecimal precoVenda2;
-    public BigDecimal precoVendaFardo;
-    public BigDecimal precoVendaCaixa;
-    public BigDecimal precoVendaPallet;
+    public BigDecimal precoVenda3;
+    public BigDecimal precoVenda4;
+    public BigDecimal precoVenda5;
+    public BigDecimal precoVenda6;
 }
